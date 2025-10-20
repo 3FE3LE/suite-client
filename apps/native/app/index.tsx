@@ -1,7 +1,7 @@
-import { StatusBar } from "expo-status-bar";
-import { Text, View } from "react-native";
+import { StatusBar } from 'expo-status-bar';
+import { Text, View } from 'react-native';
 
-import { Button } from "@repo/ui";
+import { Button } from '@repo/ui';
 
 export default function Native() {
   return (
@@ -9,8 +9,8 @@ export default function Native() {
       <Text className="mb-5 text-4xl font-bold">Lo logre mi amor!! </Text>
       <Button
         onClick={() => {
-          console.log("Pressed!");
-          alert("Pressed!");
+          console.log('Pressed!');
+          alert('Pressed!');
         }}
         text="Boop"
       />
