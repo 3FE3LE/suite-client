@@ -1,10 +1,5 @@
 import * as React from "react";
-import {
-  StyleSheet,
-  GestureResponderEvent,
-  Text,
-  Pressable,
-} from "react-native";
+import { GestureResponderEvent, Pressable, Text } from "react-native";
 
 export interface ButtonProps {
   text: string;
@@ -13,25 +8,9 @@ export interface ButtonProps {
 
 export function Button({ text, onClick }: ButtonProps) {
   return (
-    <Pressable style={styles.button} onPress={onClick}>
-      <Text style={styles.text}>{text}</Text>
+    <Pressable className="max-w-xs rounded-lg bg-blue-500 p-4" onPress={onClick}>
+      <Text className="text-center text-base text-white">{text}</Text>
     </Pressable>
   );
 }
 
-const styles = StyleSheet.create({
-  button: {
-    maxWidth: 200,
-    borderRadius: 10,
-    paddingTop: 14,
-    paddingBottom: 14,
-    paddingLeft: 30,
-    paddingRight: 30,
-    backgroundColor: "#2f80ed",
-  },
-  text: {
-    color: "white",
-    textAlign: "center",
-    fontSize: 15,
-  },
-});

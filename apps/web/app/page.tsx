@@ -2,12 +2,10 @@
 
 import { Button } from "@repo/ui";
 
-import styles from "../styles/index.module.css";
-
 export default function Web() {
   return (
-    <div className={styles.container}>
-      <h1>Web</h1>
+    <div className="flex min-h-screen flex-col items-center justify-center p-24">
+      <h1 className="mb-5 text-4xl font-bold">Web</h1>
       <Button onClick={() => console.log("Pressed!")} text="Boop" />
     </div>
   );

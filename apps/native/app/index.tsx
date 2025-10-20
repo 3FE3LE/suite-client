@@ -1,12 +1,12 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { Text, View } from "react-native";
 
 import { Button } from "@repo/ui";
 
 export default function Native() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>Lo logre mi amor!! </Text>
+    <View className="flex-1 items-center justify-center bg-white">
+      <Text className="mb-5 text-4xl font-bold">Lo logre mi amor!! </Text>
       <Button
         onClick={() => {
           console.log("Pressed!");
@@ -18,17 +18,3 @@ export default function Native() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  header: {
-    fontWeight: "bold",
-    marginBottom: 20,
-    fontSize: 36,
-  },
-});
