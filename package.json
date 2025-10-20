@@ -8,18 +8,31 @@
     "dev": "turbo run dev",
     "build": "turbo run build",
     "clean": "turbo run clean && rm -rf node_modules",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\" --ignore-path .gitignore"
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\" --ignore-path .gitignore",
+    "lint": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\" --ignore-path .gitignore",
+    "test": "jest",
+    "prepare": "husky"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@types/jest": "^30.0.0",
     "@types/minimatch": "^6.0.0",
+    "husky": "^9.1.7",
+    "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
+    "lint-staged": "^16.2.5",
     "nativewind": "4.2.1",
     "prettier": "^3.4.1",
     "tailwindcss": "4.1",
+    "ts-jest": "^29.4.5",
     "turbo": "^2.5.8"
   },
   "packageManager": "yarn@1.22.19",
   "engines": {
     "node": ">=20.19.4"
   },
-  "name": "with-react-native-web"
+  "name": "with-react-native-web",
+  "lint-staged": {
+    "**/*.{ts,tsx,js,jsx,json,md}": "prettier --write"
+  }
 }
