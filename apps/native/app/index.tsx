@@ -1,20 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
-import { Button } from '@repo/ui';
-
-export default function Native() {
+export default function Screen() {
   return (
-    <View className="flex-1 items-center justify-center bg-white">
-      <Text className="mb-5 text-4xl font-bold">Lo logre mi amor!! </Text>
-      <Button
-        onClick={() => {
-          console.log('Pressed!');
-          alert('Pressed!');
-        }}
-        text="Boop"
-      />
-      <StatusBar style="auto" />
+    <View style={styles.container}>
+      <Text style={styles.text}>Lo logre mi amor!! </Text>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#ffffff',
+  },
+  text: {
+    marginBottom: 20,
+    fontSize: 36,
+    fontWeight: 'bold',
+  },
+});

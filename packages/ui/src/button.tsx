@@ -1,18 +1,29 @@
-import * as React from 'react';
-import { GestureResponderEvent, Pressable, Text } from 'react-native';
+import React from 'react';
+import { Pressable, StyleSheet, Text } from 'react-native';
 
 export interface ButtonProps {
   text: string;
-  onClick?: (event: GestureResponderEvent) => void;
+  onClick?: () => void;
 }
 
 export function Button({ text, onClick }: ButtonProps) {
   return (
-    <Pressable
-      className="max-w-xs rounded-lg bg-blue-500 p-4"
-      onPress={onClick}
-    >
-      <Text className="text-center text-base text-white">{text}</Text>
+    <Pressable style={styles.button} onPress={onClick}>
+      <Text style={styles.text}>{text}</Text>
     </Pressable>
   );
 }
+
+const styles = StyleSheet.create({
+  button: {
+    maxWidth: 320,
+    borderRadius: 8,
+    backgroundColor: '#3b82f6',
+    padding: 16,
+  },
+  text: {
+    textAlign: 'center',
+    fontSize: 16,
+    color: '#ffffff',
+  },
+});
