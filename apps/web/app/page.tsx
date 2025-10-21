@@ -1,3 +1,5 @@
+import { Button } from '@repo/ui';
+
 export default function Page() {
   return (
     <div
@@ -19,6 +21,7 @@ export default function Page() {
       >
         Web
       </h1>
+      <Button text="Go to native" />
     </div>
   );
 }

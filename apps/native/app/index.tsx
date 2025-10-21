@@ -1,10 +1,12 @@
-import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+
+import { Button } from '@repo/ui';
 
 export default function Screen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Lo logre mi amor!! </Text>
+      <Text style={styles.text}>Lo logre mi amor!!</Text>
+      <Button text="Go to web" />
     </View>
   );
 }
