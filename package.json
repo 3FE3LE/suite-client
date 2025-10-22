@@ -27,7 +27,7 @@
   },
   "packageManager": "yarn@1.22.19",
   "engines": {
-    "node": ">=20.19.4"
+    "node": ">=22.20.0"
   },
   "name": "with-react-native-web",
   "lint-staged": {
