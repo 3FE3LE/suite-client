@@ -21,5 +21,6 @@ config.resolver.disableHierarchicalLookup = true;
 
 module.exports = withNativewind(config, {
   input: './global.css',
-  configPath: '../../packages/ui/tailwind.config.js',
+  configPath: path.resolve(__dirname, '../../packages/ui/tailwind.config.js'),
+  themePath: require.resolve('nativewind/theme'),
 });
