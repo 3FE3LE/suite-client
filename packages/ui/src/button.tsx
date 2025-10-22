@@ -1,8 +1,19 @@
-import React from 'react';
-import { Pressable, Text, type PressableProps } from 'react-native';
+import React, { type ComponentType } from 'react';
+import { Pressable, Text } from 'react-native-css/components';
+import {
+  type PressableProps,
+  type StyleProp,
+  type TextProps,
+  type TextStyle,
+} from 'react-native';
 
-const BUTTON_BASE_CLASSES = 'max-w-80 rounded-lg bg-blue-500 p-4';
+const BUTTON_BASE_CLASSES = 'max-w-80 rounded-lg bg-blue-900 p-4';
 const TEXT_BASE_CLASSES = 'text-center text-base text-white';
+
+type PressableWithClassName = ComponentType<
+  PressableProps & { className?: string }
+>;
+type TextWithClassName = ComponentType<TextProps & { className?: string }>;
 
 export interface ButtonProps extends Omit<PressableProps, 'children'> {
   text: string;
@@ -10,6 +21,8 @@ export interface ButtonProps extends Omit<PressableProps, 'children'> {
   onClick?: () => void;
   className?: string;
   textClassName?: string;
+  style?: PressableProps['style'];
+  textStyle?: StyleProp<TextStyle>;
 }
 
 export function Button({
@@ -18,6 +31,8 @@ export function Button({
   onClick,
   className,
   textClassName,
+  style,
+  textStyle,
   ...pressableProps
 }: ButtonProps) {
   const handlePress = onPress ?? onClick;
@@ -28,13 +43,19 @@ export function Button({
     .filter(Boolean)
     .join(' ');
 
+  const PressableComponent = Pressable as PressableWithClassName;
+  const TextComponent = Text as TextWithClassName;
+
   return (
-    <Pressable
+    <PressableComponent
       {...pressableProps}
       className={buttonClasses}
       onPress={handlePress}
+      style={style}
     >
-      <Text className={labelClasses}>{text}</Text>
-    </Pressable>
+      <TextComponent className={labelClasses} style={textStyle}>
+        {text}
+      </TextComponent>
+    </PressableComponent>
   );
 }
