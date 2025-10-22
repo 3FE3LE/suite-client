@@ -1,9 +1,11 @@
-import { Text as RNText, View as RNView } from 'react-native';
 import { styled } from 'nativewind';
-import { Button } from '@repo/ui';
+import { Text as RNText, View as RNView } from 'react-native';
+
+import { Button as RepoButton } from '@repo/ui';
 
 const View = styled(RNView);
 const Text = styled(RNText);
+const Button = styled(RepoButton);
 
 export default function Screen() {
   return (
