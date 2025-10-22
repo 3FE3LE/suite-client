@@ -4,5 +4,11 @@
     "strict": true,
     "jsx": "react-jsx"
   },
-  "include": ["**/*.ts", "**/*.tsx", "nativewind-env.d.ts", "types.d.ts"]
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "nativewind-env.d.ts",
+    "types.d.ts",
+    "global.d.ts"
+  ]
 }
