@@ -9,7 +9,10 @@ export default defineConfig((options: Options) => ({
   },
   clean: true,
   format: ['cjs', 'esm'],
-  external: ['react'],
-  dts: true,
+  external: ['react', 'react-native', 'nativewind'], // ← Agregar nativewind
+  dts: {
+    resolve: false, // ← Importante para resolver tipos externos
+  },
+  skipNodeModulesBundle: true, // ← Evita bundlear node_modules
   ...options,
 }));

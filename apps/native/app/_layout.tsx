@@ -1,7 +1,7 @@
+import '../global.css';
+
 import { Stack } from 'expo-router';
 
-const AppLayout = () => {
+export default function RootLayout() {
   return <Stack />;
-};
-
-export default AppLayout;
+}
