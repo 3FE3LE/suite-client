@@ -1,11 +1,6 @@
-import React, { type ComponentType } from 'react';
+import React, { ComponentType } from 'react';
+import { PressableProps, TextProps } from 'react-native';
 import { Pressable, Text } from 'react-native-css/components';
-import {
-  type PressableProps,
-  type StyleProp,
-  type TextProps,
-  type TextStyle,
-} from 'react-native';
 
 const BUTTON_BASE_CLASSES = 'max-w-80 rounded-lg bg-blue-900 p-4';
 const TEXT_BASE_CLASSES = 'text-center text-base text-white';
@@ -21,8 +16,6 @@ export interface ButtonProps extends Omit<PressableProps, 'children'> {
   onClick?: () => void;
   className?: string;
   textClassName?: string;
-  style?: PressableProps['style'];
-  textStyle?: StyleProp<TextStyle>;
 }
 
 export function Button({
@@ -31,8 +24,6 @@ export function Button({
   onClick,
   className,
   textClassName,
-  style,
-  textStyle,
   ...pressableProps
 }: ButtonProps) {
   const handlePress = onPress ?? onClick;
@@ -51,11 +42,8 @@ export function Button({
       {...pressableProps}
       className={buttonClasses}
       onPress={handlePress}
-      style={style}
     >
-      <TextComponent className={labelClasses} style={textStyle}>
-        {text}
-      </TextComponent>
+      <TextComponent className={labelClasses}>{text}</TextComponent>
     </PressableComponent>
   );
 }
