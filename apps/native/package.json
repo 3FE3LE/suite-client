@@ -12,32 +12,26 @@
   },
   "dependencies": {
     "@repo/ui": "*",
+    "@repo/tokens": "*",
     "expo": "54.0.19",
     "expo-constants": "~18.0.10",
     "expo-linking": "~8.0.8",
     "expo-router": "~6.0.13",
     "expo-status-bar": "~3.0.8",
     "expo-system-ui": "~6.0.8",
-    "nativewind": "^5.0.0-preview.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-native": "0.81.5",
-    "react-native-css": "^3.0.1",
     "react-native-reanimated": "^4.1.3",
     "react-native-safe-area-context": "^5.6.1",
     "react-native-screens": "~4.16.0",
     "react-native-web": "^0.21.2",
-    "react-native-worklets": "^0.5.1",
-    "tailwindcss": "^4.1.15"
+    "react-native-worklets": "^0.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.24.9",
     "@expo/webpack-config": "^19.0.1",
-    "@tailwindcss/postcss": "^4.1.15",
     "@types/react": "~19.1.10",
-    "postcss": "^8.5.6",
-    "prettier-plugin-tailwindcss": "^0.7.1",
-    "tailwindcss": "^4.1.15",
     "typescript": "^5.9.3"
   },
   "expo": {
@@ -46,8 +40,5 @@
         "listUnknownPackages": false
       }
     }
-  },
-  "resolutions": {
-    "lightningcss": "1.30.1"
   }
 }

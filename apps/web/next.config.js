@@ -5,11 +5,9 @@ module.exports = {
   reactStrictMode: true,
   outputFileTracingRoot: path.join(__dirname, '../../'),
 
-  // Transpila NativeWind y tus paquetes del monorepo
   transpilePackages: [
-    'nativewind',
-    'react-native-css',
     '@repo/ui',
+    '@repo/tokens',
     'react-native',
     'react-native-web',
     'react-native-safe-area-context',
@@ -22,6 +20,7 @@ module.exports = {
       // Transform all direct `react-native` imports to `react-native-web`
       'react-native$': 'react-native-web',
       '@repo/ui': path.join(__dirname, '../../packages/ui/src'),
+      '@repo/tokens': path.join(__dirname, '../../packages/tokens/src'),
     };
 
     config.resolve.extensions = [

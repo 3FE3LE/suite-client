@@ -1,17 +1,38 @@
-import { styled } from 'nativewind';
-import { Text as RNText, View as RNView } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
-import { Button as RepoButton } from '@repo/ui';
-
-const View = styled(RNView);
-const Text = styled(RNText);
-const Button = styled(RepoButton);
+import { Button } from '@repo/ui';
+import { baseStyles, colors, spacing, typography } from '@repo/tokens';
 
 export default function Screen() {
   return (
-    <View className="flex-1 items-center justify-center bg-white">
-      <Text className="mb-5 text-2xl font-bold">Lo logre mi amor!!</Text>
-      <Button text="Go to web" />
+    <View style={[baseStyles.centerContent, styles.container]}>
+      <Text style={[baseStyles.text.h2, styles.heading]}>
+        Lo logre, mi amor!!
+      </Text>
+      <Button
+        text="Go to web"
+        style={styles.button}
+        textStyle={styles.buttonText}
+      />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: colors.background,
+    paddingHorizontal: spacing[6],
+  },
+  heading: {
+    fontFamily: typography.fontFamily.bold,
+    textAlign: 'center',
+    marginBottom: spacing[5],
+  },
+  button: {
+    alignSelf: 'stretch',
+  },
+  buttonText: {
+    letterSpacing: 0.3,
+  },
+});

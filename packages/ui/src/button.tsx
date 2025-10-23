@@ -1,49 +1,120 @@
-import React, { ComponentType } from 'react';
-import { PressableProps, TextProps } from 'react-native';
-import { Pressable, Text } from 'react-native-css/components';
+'use client';
 
-const BUTTON_BASE_CLASSES = 'max-w-80 rounded-lg bg-blue-900 p-4';
-const TEXT_BASE_CLASSES = 'text-center text-base text-white';
+import React from 'react';
+import {
+  GestureResponderEvent,
+  Pressable,
+  PressableProps,
+  StyleProp,
+  StyleSheet,
+  Text,
+  TextStyle,
+  ViewStyle,
+} from 'react-native';
 
-type PressableWithClassName = ComponentType<
-  PressableProps & { className?: string }
->;
-type TextWithClassName = ComponentType<TextProps & { className?: string }>;
+import { baseStyles, colors } from '@repo/tokens';
 
-export interface ButtonProps extends Omit<PressableProps, 'children'> {
+export type ButtonVariant = 'primary' | 'secondary' | 'outline';
+
+export interface ButtonProps
+  extends Omit<PressableProps, 'style' | 'children'> {
   text: string;
-  onPress?: () => void;
+  variant?: ButtonVariant;
+  style?: StyleProp<ViewStyle>;
+  textStyle?: StyleProp<TextStyle>;
+  disabled?: boolean;
+  onPress?: PressableProps['onPress'];
   onClick?: () => void;
-  className?: string;
-  textClassName?: string;
 }
 
-export function Button({
-  text,
-  onPress,
-  onClick,
-  className,
-  textClassName,
-  ...pressableProps
-}: ButtonProps) {
-  const handlePress = onPress ?? onClick;
-  const buttonClasses = [BUTTON_BASE_CLASSES, className]
-    .filter(Boolean)
-    .join(' ');
-  const labelClasses = [TEXT_BASE_CLASSES, textClassName]
-    .filter(Boolean)
-    .join(' ');
+export function Button(props: ButtonProps) {
+  const {
+    text,
+    variant = 'primary',
+    style,
+    textStyle,
+    onPress,
+    onClick,
+    disabled,
+    ...pressableProps
+  } = props;
 
-  const PressableComponent = Pressable as PressableWithClassName;
-  const TextComponent = Text as TextWithClassName;
+  const handlePress = (event: GestureResponderEvent) => {
+    if (disabled) {
+      return;
+    }
+    onPress?.(event);
+    onClick?.();
+  };
+
+  const variantStyle = getVariantStyle(variant);
+  const variantTextStyle = getVariantTextStyle(variant);
 
   return (
-    <PressableComponent
+    <Pressable
       {...pressableProps}
-      className={buttonClasses}
+      accessibilityRole="button"
+      accessibilityState={{ disabled: Boolean(disabled) }}
+      disabled={disabled}
+      style={StyleSheet.flatten([
+        baseStyles.button.base,
+        variantStyle,
+        disabled && styles.disabled,
+        style,
+      ])}
       onPress={handlePress}
     >
-      <TextComponent className={labelClasses}>{text}</TextComponent>
-    </PressableComponent>
+      <Text
+        style={StyleSheet.flatten([
+          baseStyles.button.text,
+          variantTextStyle,
+          disabled && styles.disabledText,
+          textStyle,
+        ])}
+      >
+        {text}
+      </Text>
+    </Pressable>
   );
 }
+
+function getVariantStyle(variant: ButtonVariant) {
+  switch (variant) {
+    case 'secondary':
+      return baseStyles.button.secondary;
+    case 'outline':
+      return styles.outline;
+    case 'primary':
+    default:
+      return baseStyles.button.primary;
+  }
+}
+
+function getVariantTextStyle(variant: ButtonVariant) {
+  switch (variant) {
+    case 'secondary':
+      return baseStyles.button.textSecondary;
+    case 'outline':
+      return styles.outlineText;
+    case 'primary':
+    default:
+      return null;
+  }
+}
+
+const styles = StyleSheet.create({
+  disabled: {
+    opacity: 0.6,
+  },
+  disabledText: {
+    color: colors.textMuted,
+  },
+  outline: {
+    borderWidth: 1,
+    borderColor: colors.borderStrong,
+    backgroundColor: 'transparent',
+  },
+  outlineText: {
+    color: colors.text,
+  },
+});
